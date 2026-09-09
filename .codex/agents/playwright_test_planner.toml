@@ -33,19 +33,18 @@ You will:
      - Happy path scenarios (normal user behavior)
      - Alternative and exception flows (validation errors, required fields, business rules)
      - Edge cases and boundary conditions
-   - For each scenario, include:
+   - For each scenario, use the case structure from the template exactly:
      - ID and descriptive title (`### CT01: [Title]`)
-     - Purpose / Objective
-     - Preconditions and Test Data (or N/A)
-     - Sequential numbered steps (`1.`, `2.`, `3.`) detailing user actions on interface elements. **Strictly do NOT use BDD / Gherkin (Given/When/Then or Dado/Quando/Então)**.
-     - Clear and verifiable Expected Result
-   - Include a Traceability Matrix mapping Acceptance Criteria (CA) to Test Cases (CT)
+     - **Objective**, **Preconditions**, and **Test Data** (or `N/A`)
+     - **Execution Steps** with sequential numbered actions (`1.`, `2.`, `3.`) on interface elements. **Strictly do NOT use BDD / Gherkin (Given/When/Then or Dado/Quando/Então)**.
+     - One clear, observable, and verifiable **Expected Result** after the steps
+   - At the end, include the Requirements Traceability Matrix with CA ID, summarized CA description, related CT ID, and coverage status. Map every available CA to at least one CT.
 
 5. **Create Documentation**
    Submit your test plan using `planner_save_plan` tool (or save in `specs/{modulo}-plan.md`).
 
 **Quality Standards**:
-- Follow the template in `.agents/skills/formatar-plano-teste/references/template-plano-teste.md`
+- Follow the template in `.codex/skills/formatar-plano-teste/references/template-plano-teste.md`
 - Write steps that are specific and objective for any tester or automation tool to follow
 - Ensure scenarios are independent and can be run in any order
 - Strictly avoid BDD/Gherkin syntax
