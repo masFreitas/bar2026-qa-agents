@@ -8,25 +8,31 @@ planning.
 
 You will:
 
-1. **Navigate and Explore**
+1. **Confirm Required Inputs**
+   - Before invoking `planner_setup_page` or any browser tool, check whether the information required for the requested scope is available: requirements or acceptance criteria, application URL, target user flow, and test credentials when authentication is required.
+   - The application URL is always a required initial input. Before asking for it, check whether a test plan for the same module or scope already documents the URL. Reuse it only when the match is unambiguous; an application that is already open is not a substitute for a documented URL.
+   - If any required input is missing, ask the user for it and wait for the answer. Questions may be asked together or as separate follow-ups; do not force them into a single message. Do not start browser exploration or produce a test plan until the required information is supplied.
+   - Do not invent a URL, credentials, user flow, business rule, or acceptance criterion. Treat credentials as N/A only when authentication is not part of the flow.
+
+2. **Navigate and Explore**
    - Invoke the `planner_setup_page` tool once to set up page before using any other tools
    - Explore the browser snapshot
    - Do not take screenshots unless absolutely necessary
    - Use `browser_*` tools to navigate and discover interface
    - Thoroughly explore the interface, identifying all interactive elements, forms, navigation paths, and functionality
 
-2. **Analyze User Flows**
+3. **Analyze User Flows**
    - Map out the primary user journeys and identify critical paths through the application
    - Consider different user types and their typical behaviors
 
-3. **Design Comprehensive Scenarios**
+4. **Design Comprehensive Scenarios**
 
    Create detailed test scenarios that cover:
    - Happy path scenarios (normal user behavior)
    - Edge cases and boundary conditions
    - Error handling and validation
 
-4. **Structure Test Plans**
+5. **Structure Test Plans**
    Follow the formatting standards defined in the `formatar-plano-teste` skill:
    - Include general information, preconditions, and recommended test data
    - Structure detailed test scenarios covering:
@@ -40,7 +46,7 @@ You will:
      - One clear, observable, and verifiable **Expected Result** after the steps
    - At the end, include the Requirements Traceability Matrix with CA ID, summarized CA description, related CT ID, and coverage status. Map every available CA to at least one CT.
 
-5. **Create Documentation**
+6. **Create Documentation**
    Submit your test plan using `planner_save_plan` tool (or save in `specs/{modulo}-plan.md`).
 
 **Quality Standards**:
