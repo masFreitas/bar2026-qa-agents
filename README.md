@@ -27,10 +27,14 @@ bar2026-qa-agents/
 ├── agents/                    # 📄 Personas em Markdown (Fonte da Verdade)
 │   ├── playwright_test_planner.md
 │   ├── playwright_test_generator.md
-│   └── playwright_test_healer.md
+│   ├── playwright_test_healer.md
+│   └── relator-status.agent.md
 │
 ├── skills/                    # 🛠️ Habilidades modulares (Fonte única 100% DRY)
-│   └── formatar-plano-teste/
+│   ├── formatar-plano-teste/
+│   │   ├── SKILL.md
+│   │   └── references/
+│   └── gerar-status-report/
 │       ├── SKILL.md
 │       └── references/
 │
@@ -48,7 +52,8 @@ bar2026-qa-agents/
 │
 ├── user-stories/              # 📥 Entrada: Histórias de usuário e critérios de aceite
 ├── specs/                     # 📋 Saída: Planos de teste estruturados
-└── tests/                     # 🧪 Saída: Testes automatizados Playwright (*.spec.ts)
+├── tests/                     # 🧪 Saída: Testes automatizados Playwright (*.spec.ts)
+└── relatorios/                # 📊 Saída: Relatórios executivos de qualidade
 ```
 
 ---
@@ -75,7 +80,7 @@ bar2026-qa-agents/
 
 ---
 
-## 🎯 As 3 Fases do Ciclo de QA no Workshop
+## 🎯 As 4 Fases do Ciclo de QA no Workshop
 
 ### Fase 1: Planejamento (`playwright_test_planner`)
 Transforma critérios de aceite e regras de negócio em casos de teste funcionais com passos numerados e matriz de rastreabilidade (sem BDD/Gherkin).
@@ -90,14 +95,19 @@ Traduz os passos do plano de teste para código de automação Playwright em Typ
 ### Fase 3: Cura / Healing (`playwright_test_healer`)
 Executa os testes, analisa os relatórios de falha, sincronismo ou seletores desatualizados e aplica as correções no código até ficarem verdes.
 
+### Fase 4: Relatório de Status (`relator_status`)
+Consolida métricas de qualidade, cobertura de requisitos e resultados de execução em um relatório executivo com tickets de defeito prontos para gestão de tarefas.
+- **Insumo:** `specs/*.md`, `tests/*.spec.ts`, `playwright-report/`
+- **Saída:** `relatorios/{modulo}-status-report.md`
+
 ---
 
 ## 💻 Como Executar em Cada Ferramenta de IA
 
 ### 1. No Google Antigravity
-Basta abrir a pasta no **Antigravity IDE**. O assistente carrega automaticamente o `AGENTS.md` e a skill `formatar-plano-teste`.
+Basta abrir a pasta no **Antigravity IDE**. O assistente carrega automaticamente o `AGENTS.md` e as skills `formatar-plano-teste` e `gerar-status-report`.
 - **Exemplo de prompt:**
-  > *"Atue como `playwright_test_planner` e elabore o plano de testes para a história `user-stories/US-01-transacao-entrada-saida.md`."*
+  > *"Atue como `playwright_test_planner` e crie o plano de testes para a `user-stories/US-01-transacao-entrada-saida.md`. Utilize o Playwright MCP para analisar e navegar pelo site antes de finalizar o plano de teste"*
 
 ---
 
@@ -108,7 +118,7 @@ Você pode alternar de agente diretamente pela CLI ou utilizar o chat:
 codex agent switch playwright_test_planner
 
 # Ou mencionar no prompt:
-"Utilize o playwright_test_planner para criar os casos de teste da US-01."
+"Utilize o playwright_test_planner para criar os casos de teste da US-01. Utilize o Playwright MCP para analisar e navegar pelo site antes de finalizar o plano de teste"
 ```
 
 ---
@@ -122,7 +132,7 @@ Abra o terminal na raiz do projeto e inicie o `claude`. Você pode usar linguage
 /healer tests/example.spec.ts
 
 # Ou via prompt livre:
-"Atue como playwright_test_planner para a US-01."
+"Atue como playwright_test_planner para a US-01. Utilize o Playwright MCP para analisar e navegar pelo site antes de finalizar o plano de teste"
 ```
 
 ---
@@ -130,4 +140,4 @@ Abra o terminal na raiz do projeto e inicie o `claude`. Você pode usar linguage
 ### 4. No Cursor / VS Code Copilot
 O arquivo `AGENTS.md` é lido como contexto global do projeto.
 - No chat do Cursor, você pode referenciar as personas diretamente:
-  > *"@playwright_test_planner.md crie o plano de testes para @US-01-transacao-entrada-saida.md"*
+  > *"@playwright_test_planner.md crie o plano de testes para @US-01-transacao-entrada-saida.md. Utilize o Playwright MCP para analisar e navegar pelo site antes de finalizar o plano de teste"*
