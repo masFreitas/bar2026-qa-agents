@@ -5,15 +5,16 @@ Este repositório foi arquitetado para funcionar de forma transparente e agnóst
 
 ---
 
-## 🎯 Arquitetura do Ciclo de Qualidade (3 Personas)
+## 🎯 Arquitetura do Ciclo de Qualidade (4 Personas)
 
-O fluxo de trabalho de QA neste projeto é dividido em três personas especializadas:
+O fluxo de trabalho de QA neste projeto é dividido em quatro personas especializadas:
 
 | Persona / Agente | Arquivo Canônico | Responsabilidade Principal | Insumo | Saída |
 | :--- | :--- | :--- | :--- | :--- |
 | **`playwright_test_planner`** | [agents/playwright_test_planner.md](agents/playwright_test_planner.md) | Analisar histórias de usuário e criar o plano de testes detalhado | `user-stories/*.md` | `specs/{modulo}-plan.md` |
 | **`playwright_test_generator`** | [agents/playwright_test_generator.md](agents/playwright_test_generator.md) | Converter planos de teste em código Playwright TypeScript | `specs/*.md` | `tests/*.spec.ts` |
 | **`playwright_test_healer`** | [agents/playwright_test_healer.md](agents/playwright_test_healer.md) | Executar, diagnosticar falhas e corrigir testes automaticamente | `tests/*.spec.ts` | Testes corrigidos e verdes |
+| **`relator_status`** | [agents/relator-status.agent.md](agents/relator-status.agent.md) | Consolidar métricas e gerar relatórios executivos de qualidade | `specs/*.md`, `tests/*.spec.ts`, `playwright-report/` | `relatorios/{modulo}-status-report.md` |
 
 ---
 
@@ -34,6 +35,13 @@ O fluxo de trabalho de QA neste projeto é dividido em três personas especializ
   - **Proibido o uso de BDD / Gherkin** (`Dado`, `Quando`, `Então` / `Given`, `When`, `Then`).
   - Usar passos sequenciais numerados (`1.`, `2.`, `3.`) objetivos e verificáveis.
   - Concluir obrigatoriamente com a **Matriz de Rastreabilidade de Requisitos** ligando 100% dos Critérios de Aceite (`CA01`, `CA02`...) aos Casos de Teste (`CT01`, `CT02`...).
+
+### `gerar-status-report`
+- **Localização:** [skills/gerar-status-report/SKILL.md](skills/gerar-status-report/SKILL.md) e [skills/gerar-status-report/references/template-status-report.md](skills/gerar-status-report/references/template-status-report.md)
+- **Quando usar:** Sempre que a persona `relator_status` (ou o usuário) precisar consolidar métricas de qualidade, cobertura de requisitos e resultados de execução em um relatório executivo.
+- **Regras Críticas:**
+  - **Dados reais e auditáveis:** É proibido inventar percentuais de cobertura ou omitir testes bloqueados.
+  - Todo teste com status `BLOQUEADO` deve ser destacado com explicação técnica e formatado como ticket de defeito pronto para cópia.
 
 ---
 
