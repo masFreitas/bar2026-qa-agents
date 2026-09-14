@@ -17,6 +17,14 @@ O fluxo de trabalho de QA neste projeto é dividido em três personas especializ
 
 ---
 
+## ⚠️ Regras Globais de Ambiente e Execução (MCP & Dependências)
+
+- **Pré-requisito Obrigatório (`node_modules`):** Antes de invocar ferramentas MCP (`planner_setup_page`, `browser_*`) ou executar testes automatizados (`npx playwright test`), qualquer agente deve garantir que as dependências do projeto estejam instaladas (`node_modules/` presente).
+- **Tratamento de Ausência:** Se a pasta `node_modules/` estiver ausente, o agente deve interromper o fluxo e orientar o usuário a executar `npm install && npx playwright install` (ou executar a instalação via terminal se tiver ferramentas de execução) antes de prosseguir com o planejamento, exploração ou execução de testes.
+- **Isolamento de Configuração:** É terminantemente proibido utilizar caminhos absolutos (*hardcoded*) em arquivos de configuração como `mcp_config.json` ou nos testes, garantindo portabilidade total entre sistemas operacionais (Windows, macOS, Linux).
+
+---
+
 ## 🛠️ Skills Disponíveis
 
 ### `formatar-plano-teste`

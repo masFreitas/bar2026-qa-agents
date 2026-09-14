@@ -55,17 +55,23 @@ bar2026-qa-agents/
 
 ## ⚙️ Pré-requisitos & Instalação
 
+> [!IMPORTANT]
+> **Ordem Importante para o Workshop:** Execute os comandos de instalação no terminal **antes** de abrir o projeto na sua IDE de IA (Antigravity, Cursor, VS Code). Isso garante que o servidor MCP do Playwright inicialize com todas as dependências prontas.
+
 1. Clone o repositório:
    ```bash
    git clone <URL_DO_REPOSITORIO>
-   cd bar2026-qa-agents-codex
+   cd bar2026-qa-agents
    ```
 
-2. Instale as dependências do projeto:
+2. Instale as dependências e navegadores:
    ```bash
    npm install
    npx playwright install
    ```
+
+> [!TIP]
+> **Troubleshooting MCP:** Se você abriu a IDE antes de executar `npm install`, o servidor MCP pode falhar na inicialização. Para corrigir, basta recarregar a janela (`Ctrl+Shift+P` / `Cmd+Shift+P` ➔ *Developer: Reload Window*) ou reiniciar o servidor em *MCP Servers*.
 
 ---
 
