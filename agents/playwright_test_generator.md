@@ -59,6 +59,16 @@ When authoring Playwright tests:
     - `await expect(locator).toHaveText(...)`
     - `await expect(locator).toHaveValue(...)`
   - Avoid arbitrary `page.waitForTimeout()` sleeps; rely on auto-waiting locators and explicit assertions.
+- **Casos Não Implementáveis (`test.fixme`)**:
+  - Se um caso de teste do plano **não puder ser automatizado** (ex.: funcionalidade ausente na UI, fluxo bloqueado, dados inacessíveis ou limitação técnica), ele **NÃO deve ser omitido**.
+  - Registre-o como `test.fixme(...)` com o motivo da impossibilidade:
+    ```typescript
+    // scenario: CT07 - Validar relatório de exportação PDF
+    test.fixme('CT07: Deve gerar relatório PDF da transação', async ({ page }) => {
+      // FIXME: Funcionalidade de exportação PDF ainda não implementada na UI.
+    });
+    ```
+  - Isso garante rastreabilidade total entre o plano de testes e o arquivo `.spec.ts`, e permite que o `playwright_test_healer` identifique pendências.
 
 ---
 
