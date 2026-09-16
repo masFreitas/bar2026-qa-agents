@@ -106,38 +106,87 @@ Consolida métricas de qualidade, cobertura de requisitos e resultados de execu�
 
 ### 1. No Google Antigravity
 Basta abrir a pasta no **Antigravity IDE**. O assistente carrega automaticamente o `AGENTS.md` e as skills `formatar-plano-teste` e `gerar-status-report`.
-- **Exemplo de prompt:**
-  > *"Atue como `playwright_test_planner` e crie o plano de testes para a `user-stories/US-01-transacao-entrada-saida.md`. Utilize o Playwright MCP para analisar e navegar pelo site antes de finalizar o plano de teste"*
+
+#### Fase 1 — Planejamento (`playwright_test_planner`)
+> *"Atue como `playwright_test_planner` e crie o plano de testes para a `user-stories/US-01-transacao-entrada-saida.md`. Utilize o Playwright MCP para analisar e navegar pelo site antes de finalizar o plano de teste"*
+
+#### Fase 2 — Geração (`playwright_test_generator`)
+> *"Atue como `playwright_test_generator` e gere os testes Playwright em TypeScript para o plano `specs/transacao-entrada-saida-plan.md`. Se necessário, utilize o Playwright MCP para navegar pela aplicação e validar os seletores"*
+
+#### Fase 3 — Cura / Healing (`playwright_test_healer`)
+> *"Atue como `playwright_test_healer`. Execute os testes em `tests/transacao-entrada-saida.spec.ts`, diagnostique as falhas e aplique as correções necessárias até que todos os testes fiquem verdes"*
+
+#### Fase 4 — Relatório de Status (`relator_status`)
+> *"Atue como `relator_status` e gere o relatório executivo de qualidade para o módulo transação-entrada-saida, consolidando os planos em `specs/`, os resultados de execução dos testes em `tests/` e os dados do `playwright-report/`"*
 
 ---
 
 ### 2. No OpenAI Codex
 Você pode alternar de agente diretamente pela CLI ou utilizar o chat:
-```bash
-# Alternar agente no terminal
-codex agent switch playwright_test_planner
 
-# Ou mencionar no prompt:
-"Utilize o playwright_test_planner para criar os casos de teste da US-01. Utilize o Playwright MCP para analisar e navegar pelo site antes de finalizar o plano de teste"
+#### Fase 1 — Planejamento
+```bash
+codex agent switch playwright_test_planner
+"Crie os casos de teste da US-01. Utilize o Playwright MCP para analisar e navegar pelo site antes de finalizar o plano de teste"
+```
+
+#### Fase 2 — Geração
+```bash
+codex agent switch playwright_test_generator
+"Gere os testes Playwright em TypeScript para o plano specs/transacao-entrada-saida-plan.md. USe necessário, utilize o Playwright MCP para navegar pela aplicação e validar os seletores"
+```
+
+#### Fase 3 — Cura / Healing
+```bash
+codex agent switch playwright_test_healer
+"Execute os testes em tests/transacao-entrada-saida.spec.ts, diagnostique as falhas e aplique as correções até ficarem verdes"
+```
+
+#### Fase 4 — Relatório de Status
+```bash
+codex agent switch relator_status
+"Gere o relatório executivo de qualidade do módulo transação-entrada-saida consolidando specs/, tests/ e playwright-report/"
 ```
 
 ---
 
 ### 3. No Claude Code
 Abra o terminal na raiz do projeto e inicie o `claude`. Você pode usar linguagem natural ou os **slash commands** dedicados:
+
+#### Via Slash Commands
 ```bash
-# Via slash command:
 /planner user-stories/US-01-transacao-entrada-saida.md
 /generator specs/transacao-entrada-saida-plan.md
-/healer tests/example.spec.ts
-
-# Ou via prompt livre:
-"Atue como playwright_test_planner para a US-01. Utilize o Playwright MCP para analisar e navegar pelo site antes de finalizar o plano de teste"
+/healer tests/transacao-entrada-saida.spec.ts
 ```
+
+#### Via Prompt Livre
+
+**Fase 1 — Planejamento:**
+> *"Atue como playwright_test_planner para a US-01. Utilize o Playwright MCP para analisar e navegar pelo site antes de finalizar o plano de teste"*
+
+**Fase 2 — Geração:**
+> *"Atue como playwright_test_generator e gere os testes Playwright em TypeScript para o plano specs/transacao-entrada-saida-plan.md. Se necessário, utilize o Playwright MCP para navegar pela aplicação e validar os seletores"*
+
+**Fase 3 — Cura / Healing:**
+> *"Atue como playwright_test_healer. Execute os testes em tests/transacao-entrada-saida.spec.ts, diagnostique as falhas e aplique as correções necessárias até ficarem verdes"*
+
+**Fase 4 — Relatório de Status:**
+> *"Atue como relator_status e gere o relatório executivo de qualidade para o módulo transação-entrada-saida, consolidando specs/, tests/ e playwright-report/"*
 
 ---
 
 ### 4. No Cursor / VS Code Copilot
-O arquivo `AGENTS.md` é lido como contexto global do projeto.
-- No chat do Cursor, você pode referenciar as personas diretamente:
-  > *"@playwright_test_planner.md crie o plano de testes para @US-01-transacao-entrada-saida.md. Utilize o Playwright MCP para analisar e navegar pelo site antes de finalizar o plano de teste"*
+O arquivo `AGENTS.md` é lido como contexto global do projeto. No chat do Cursor, você pode referenciar as personas diretamente:
+
+#### Fase 1 — Planejamento
+> *"@playwright_test_planner.md crie o plano de testes para @US-01-transacao-entrada-saida.md. Se necessário, utilize o Playwright MCP para navegar pela aplicação e validar os seletores"*
+
+#### Fase 2 — Geração
+> *"@playwright_test_generator.md gere os testes Playwright em TypeScript para @transacao-entrada-saida-plan.md. Se necessário, utilize o Playwright MCP para navegar pela aplicação e validar os seletores"*
+
+#### Fase 3 — Cura / Healing
+> *"@playwright_test_healer.md execute os testes em @transacao-entrada-saida.spec.ts, diagnostique as falhas e aplique as correções até ficarem verdes"*
+
+#### Fase 4 — Relatório de Status
+> *"@relator-status.agent.md gere o relatório executivo de qualidade do módulo transação-entrada-saida, consolidando specs/, tests/ e playwright-report/"*
