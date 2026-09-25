@@ -85,11 +85,11 @@ bar2026-qa-agents/
 ### Fase 1: Planejamento (`playwright_test_planner`)
 Transforma critérios de aceite e regras de negócio em casos de teste funcionais com passos numerados e matriz de rastreabilidade (sem BDD/Gherkin).
 - **Insumo:** `user-stories/US-01-transacao-entrada-saida.md`
-- **Saída:** `specs/transacao-entrada-saida-plan.md`
+- **Saída:** `specs/us01-cadastro-de-usuario-plan.md`
 
 ### Fase 2: Geração (`playwright_test_generator`)
 Traduz os passos do plano de teste para código de automação Playwright em TypeScript.
-- **Insumo:** `specs/transacao-entrada-saida-plan.md`
+- **Insumo:** `specs/us01-cadastro-de-usuario-plan.md`
 - **Saída:** `tests/transacao-entrada-saida.spec.ts`
 
 ### Fase 3: Cura / Healing (`playwright_test_healer`)
@@ -111,7 +111,7 @@ Basta abrir a pasta no **Antigravity IDE**. O assistente carrega automaticamente
 > *"Atue como `playwright_test_planner` e crie o plano de testes para a `user-stories/US-01-transacao-entrada-saida.md`. Utilize o Playwright MCP para analisar e navegar pelo site antes de finalizar o plano de teste"*
 
 #### Fase 2 — Geração (`playwright_test_generator`)
-> *"Atue como `playwright_test_generator` e gere os testes Playwright em TypeScript para o plano `specs/transacao-entrada-saida-plan.md`. Se necessário, utilize o Playwright MCP para navegar pela aplicação e validar os seletores"*
+> *"Atue como `playwright_test_generator` e gere os testes Playwright em TypeScript para o plano `specs/us01-cadastro-de-usuario-plan.md`. Se necessário, utilize o Playwright MCP para navegar pela aplicação e validar os seletores"*
 
 #### Fase 3 — Cura / Healing (`playwright_test_healer`)
 > *"Atue como `playwright_test_healer`. Execute os testes em `tests/transacao-entrada-saida.spec.ts`, diagnostique as falhas e aplique as correções necessárias até que todos os testes fiquem verdes"*
@@ -133,7 +133,7 @@ codex agent switch playwright_test_planner
 #### Fase 2 — Geração
 ```bash
 codex agent switch playwright_test_generator
-"Gere os testes Playwright em TypeScript para o plano specs/transacao-entrada-saida-plan.md. USe necessário, utilize o Playwright MCP para navegar pela aplicação e validar os seletores"
+"Gere os testes Playwright em TypeScript para o plano specs/us01-cadastro-de-usuario-plan.md. USe necessário, utilize o Playwright MCP para navegar pela aplicação e validar os seletores"
 ```
 
 #### Fase 3 — Cura / Healing
@@ -156,7 +156,7 @@ Abra o terminal na raiz do projeto e inicie o `claude`. Você pode usar linguage
 #### Via Slash Commands
 ```bash
 /planner user-stories/US-01-transacao-entrada-saida.md
-/generator specs/transacao-entrada-saida-plan.md
+/generator specs/us01-cadastro-de-usuario-plan.md
 /healer tests/transacao-entrada-saida.spec.ts
 ```
 
@@ -166,7 +166,7 @@ Abra o terminal na raiz do projeto e inicie o `claude`. Você pode usar linguage
 > *"Atue como playwright_test_planner para a US-01. Utilize o Playwright MCP para analisar e navegar pelo site antes de finalizar o plano de teste"*
 
 **Fase 2 — Geração:**
-> *"Atue como playwright_test_generator e gere os testes Playwright em TypeScript para o plano specs/transacao-entrada-saida-plan.md. Se necessário, utilize o Playwright MCP para navegar pela aplicação e validar os seletores"*
+> *"Atue como playwright_test_generator e gere os testes Playwright em TypeScript para o plano specs/us01-cadastro-de-usuario-plan.md. Se necessário, utilize o Playwright MCP para navegar pela aplicação e validar os seletores"*
 
 **Fase 3 — Cura / Healing:**
 > *"Atue como playwright_test_healer. Execute os testes em tests/transacao-entrada-saida.spec.ts, diagnostique as falhas e aplique as correções necessárias até ficarem verdes"*
@@ -183,7 +183,7 @@ O arquivo `AGENTS.md` é lido como contexto global do projeto. No chat do Cursor
 > *"@playwright_test_planner.md crie o plano de testes para @US-01-transacao-entrada-saida.md. Se necessário, utilize o Playwright MCP para navegar pela aplicação e validar os seletores"*
 
 #### Fase 2 — Geração
-> *"@playwright_test_generator.md gere os testes Playwright em TypeScript para @transacao-entrada-saida-plan.md. Se necessário, utilize o Playwright MCP para navegar pela aplicação e validar os seletores"*
+> *"@playwright_test_generator.md gere os testes Playwright em TypeScript para @us01-cadastro-de-usuario-plan.md. Se necessário, utilize o Playwright MCP para navegar pela aplicação e validar os seletores"*
 
 #### Fase 3 — Cura / Healing
 > *"@playwright_test_healer.md execute os testes em @transacao-entrada-saida.spec.ts, diagnostique as falhas e aplique as correções até ficarem verdes"*
