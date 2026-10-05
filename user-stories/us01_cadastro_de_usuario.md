@@ -1,4 +1,4 @@
-## 🧾 US02 - Cadastro de Usuário
+## 🧾 US01 - Cadastro de Usuário
 
 ### Descrição  
 - Como visitante ou novo cliente da plataforma
