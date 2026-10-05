@@ -75,6 +75,12 @@ bar2026-qa-agents/
    npx playwright install
    ```
 
+3. Instale o Playwight MCP no Codex:
+   ```bash
+   codex mcp add playwright-test -- cmd /c npx playwright run-test-mcp-server
+   codex mcp list
+   ```
+
 > [!TIP]
 > **Troubleshooting MCP:** Se você abriu a IDE antes de executar `npm install`, o servidor MCP pode falhar na inicialização. Para corrigir, basta recarregar a janela (`Ctrl+Shift+P` / `Cmd+Shift+P` ➔ *Developer: Reload Window*) ou reiniciar o servidor em *MCP Servers*.
 
