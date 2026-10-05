@@ -75,12 +75,6 @@ bar2026-qa-agents/
    npx playwright install
    ```
 
-3. Instale o Playwight MCP no Codex:
-   ```bash
-   codex mcp add playwright-test -- cmd /c npx playwright run-test-mcp-server
-   codex mcp list
-   ```
-
 > [!TIP]
 > **Troubleshooting MCP:** Se você abriu a IDE antes de executar `npm install`, o servidor MCP pode falhar na inicialização. Para corrigir, basta recarregar a janela (`Ctrl+Shift+P` / `Cmd+Shift+P` ➔ *Developer: Reload Window*) ou reiniciar o servidor em *MCP Servers*.
 
@@ -133,13 +127,13 @@ Você pode alternar de agente diretamente pela CLI ou utilizar o chat:
 #### Fase 1 — Planejamento
 ```bash
 codex agent switch playwright_test_planner
-"Crie os casos de teste da US-01. Utilize o Playwright MCP para analisar e navegar pelo site antes de finalizar o plano de teste"
+"Crie os casos de teste da US-01. Utilize o Playwright MCP ou outra ferramenta para analisar e navegar pelo site antes de finalizar o plano de teste"
 ```
 
 #### Fase 2 — Geração
 ```bash
 codex agent switch playwright_test_generator
-"Gere os testes Playwright em TypeScript para o plano specs/us01-cadastro-de-usuario-plan.md. USe necessário, utilize o Playwright MCP para navegar pela aplicação e validar os seletores"
+"Gere os testes Playwright em TypeScript para o plano specs/us01-cadastro-de-usuario-plan.md. Se necessário, utilize o Playwright MCP ou outra ferramenta para navegar pela aplicação e validar os seletores"
 ```
 
 #### Fase 3 — Cura / Healing
